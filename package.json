@@ -1,5 +1,5 @@
 {
-  "name": "sochase-rbac",
+  "name": "rbac",
   "version": "1.0.0",
   "description": "",
   "main": "server/server.js",
