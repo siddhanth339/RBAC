@@ -52,7 +52,7 @@ exports.login = async (req, res, next) => {
 exports.allowIfLoggedin = async (req, res, next) => {
   try {
     const user = res.locals.loggedInUser;
-    if (!user)
+    if (!user || req.query.email !== user.email)
       return res.status(401).json({
         error: "You need to be logged in to access this route"
       });
@@ -182,14 +182,16 @@ exports.checkAddAccess = function(toAdd) {
         {
           const data = await dbModel.Image.find({'AccessLvl': userRole.Level});
           res.status(200).json({
-            data: data
+            data: data,
+            loggedInUser: res.locals.loggedInUser
           });
         }
         else
         {
           const data = await dbModel.Image.find({'AccessLvl':{$lte:userRole.Level}}); // $lte: less than or equal to
           res.status(200).json({
-            data: data
+            data: data,
+            loggedInUser: res.locals.loggedInUser
           })
         }
       }
