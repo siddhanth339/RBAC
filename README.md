@@ -1,4 +1,4 @@
-# Simple API using RBAC 
+# Simple API for RBAC 
 This is an API implementing the RBAC model which has been developed and tested using the <a href = "https://www.postman.com/" alt = "PostMan">PostMan</a> application.
 This was built using Express and MongoDB.
 
